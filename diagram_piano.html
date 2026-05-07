@@ -1,0 +1,274 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ピアノ練習報告ツール 図解ページ</title>
+    <style>
+      :root {
+        --bg: #fff4fa;
+        --paper: #ffffff;
+        --line: #f4cfe1;
+        --text: #4a3548;
+        --muted: #8c6b7f;
+        --primary: #e84a8c;
+        --accent: #ff9fc5;
+        --chip: #ffeaf3;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        font-family: "Hiragino Sans", "Yu Gothic UI", "Meiryo", sans-serif;
+        color: var(--text);
+        background: linear-gradient(180deg, #fff9fc 0%, var(--bg) 100%);
+      }
+
+      .page {
+        max-width: 1180px;
+        margin: 0 auto;
+        padding: 28px 20px 36px;
+      }
+
+      .header {
+        background: var(--paper);
+        border: 1px solid var(--line);
+        border-radius: 18px;
+        padding: 18px;
+        box-shadow: 0 8px 24px rgba(190, 72, 126, 0.1);
+        margin-bottom: 18px;
+      }
+
+      .title {
+        margin: 0 0 8px;
+        font-size: 28px;
+      }
+
+      .subtitle {
+        margin: 0;
+        color: var(--muted);
+        line-height: 1.7;
+        font-size: 14px;
+      }
+
+      .grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 18px;
+      }
+
+      @media (max-width: 980px) {
+        .grid {
+          grid-template-columns: 1fr;
+        }
+      }
+
+      .card {
+        background: var(--paper);
+        border: 1px solid var(--line);
+        border-radius: 18px;
+        padding: 16px;
+        box-shadow: 0 8px 24px rgba(190, 72, 126, 0.1);
+      }
+
+      .card h2 {
+        margin: 0 0 12px;
+        font-size: 20px;
+      }
+
+      .shot {
+        border: 1px solid var(--line);
+        border-radius: 14px;
+        overflow: hidden;
+        background: #fff;
+      }
+
+      .shot-bar {
+        padding: 10px 12px;
+        border-bottom: 1px solid var(--line);
+        background: linear-gradient(90deg, #fff6fb 0%, #fff0f8 100%);
+        color: #7c5b6c;
+        font-size: 13px;
+      }
+
+      .shot-body {
+        padding: 12px;
+      }
+
+      .shot img {
+        width: 100%;
+        height: auto;
+        display: block;
+        border-radius: 10px;
+        border: 1px solid #f3d9e6;
+      }
+
+      .shot img.hidden {
+        display: none;
+      }
+
+      .placeholder {
+        min-height: 300px;
+        border: 2px dashed #e9bfd5;
+        border-radius: 12px;
+        display: grid;
+        place-items: center;
+        color: #a6778f;
+        background: #fff8fc;
+        text-align: center;
+        line-height: 1.8;
+        padding: 16px;
+      }
+
+      .placeholder.hidden {
+        display: none;
+      }
+
+      .caption {
+        margin-top: 10px;
+        color: var(--muted);
+        font-size: 13px;
+        line-height: 1.7;
+      }
+
+      .section + .section {
+        margin-top: 14px;
+      }
+
+      .section h3 {
+        margin: 0 0 8px;
+        font-size: 17px;
+      }
+
+      .part-list {
+        display: grid;
+        gap: 8px;
+      }
+
+      .part {
+        border: 1px solid var(--line);
+        border-radius: 12px;
+        padding: 10px;
+        background: #fff;
+      }
+
+      .part .head {
+        display: inline-block;
+        padding: 2px 8px;
+        border-radius: 999px;
+        background: var(--chip);
+        color: #7a3053;
+        font-size: 12px;
+        margin-bottom: 6px;
+      }
+
+      .part p {
+        margin: 0;
+        color: var(--text);
+        line-height: 1.7;
+        font-size: 14px;
+      }
+
+      .tips {
+        margin: 0;
+        padding-left: 20px;
+        color: var(--text);
+      }
+
+      .tips li {
+        margin-bottom: 8px;
+        line-height: 1.7;
+        font-size: 14px;
+      }
+
+      .note {
+        margin-top: 16px;
+        border: 1px dashed #e2bcd1;
+        border-radius: 12px;
+        background: #fff9fc;
+        padding: 10px 12px;
+        font-size: 13px;
+        color: var(--muted);
+      }
+    </style>
+  </head>
+  <body>
+    <main class="page">
+      <section class="header">
+        <h1 class="title">🎹 ピアノ練習報告ツール 図解ページ</h1>
+        <p class="subtitle">
+          左に報告ツール画面、右に「自動化の4パーツ」と「工夫したポイント」を配置した提出用レイアウトです。
+        </p>
+      </section>
+
+      <section class="grid">
+        <article class="card">
+          <h2>報告ツール画面（スクリーンショット）</h2>
+          <div class="shot" aria-label="報告ツール画面">
+            <div class="shot-bar">Webアプリ - ピアノ練習報告</div>
+            <div class="shot-body">
+              <img
+                id="toolShot"
+                src="./piano Lesson.png"
+                alt="ピアノ練習報告ツールの画面"
+                onerror="this.classList.add('hidden');document.getElementById('shotPlaceholder').classList.remove('hidden');"
+              />
+              <div class="placeholder hidden" id="shotPlaceholder">
+                ここにスクリーンショットを配置
+                <br />
+                画像ファイル名を <b>piano Lesson.png</b> にして
+                <br />
+                このHTMLと同じフォルダに置いてください
+              </div>
+            </div>
+          </div>
+          <p class="caption">
+            ピンク系カラーと音楽モチーフで親しみやすい印象にし、ボタンを大きめにしてスマホでも入力しやすく設計しています。
+          </p>
+        </article>
+
+        <article class="card">
+          <div class="section">
+            <h3>自動化の4パーツ</h3>
+            <div class="part-list">
+              <div class="part">
+                <span class="head">1. トリガー（起動のきっかけ）</span>
+                <p>入力画面の「送信ボタン」をタップした瞬間が、処理開始の合図になります。</p>
+              </div>
+              <div class="part">
+                <span class="head">2. ソース元（データの発生場所）</span>
+                <p>index.html の入力フォームで「お名前・練習時間・曲名・メッセージ」を受け取ります。</p>
+              </div>
+              <div class="part">
+                <span class="head">3. 処理する場所（加工と制御）</span>
+                <p>Code.gs が入力データを整理し、どの列にどの順番で保存するかを判断して実行します。</p>
+              </div>
+              <div class="part">
+                <span class="head">4. 届ける先（最終目的地）</span>
+                <p>Googleスプレッドシートに1行ずつ追記し、先生が確認できる練習日誌として蓄積します。</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="section">
+            <h3>工夫したポイント</h3>
+            <ul class="tips">
+              <li>入力項目を4つに絞り、子どもと保護者が短時間で報告できる構成にした。</li>
+              <li>練習時間を選択ボタン化し、スマホ操作で迷わないUIにした。</li>
+              <li>ピンク系デザインと音符イメージで、楽しく続けられる雰囲気を作った。</li>
+              <li>白画面トラブルは、HTML配置確認とdoGetの簡素化、再デプロイで解決した。</li>
+              <li>自動記録により、先生の転記作業を減らし、レッスン準備時間を確保できた。</li>
+            </ul>
+          </div>
+
+          <p class="note">
+            発表時は「左の画面で入力」→「右の4パーツで処理」→「スプレッドシートに蓄積」の順で説明すると伝わりやすいです。
+          </p>
+        </article>
+      </section>
+    </main>
+  </body>
+</html>
